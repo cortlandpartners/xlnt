@@ -9,6 +9,10 @@ also providing a function library spanning Excel built-in functions.
    :target: http://python-xlnt.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
+.. image:: https://travis-ci.org/cortlandpartners/xlnt.svg?branch=master
+   :target: https://travis-ci.org/cortlandpartners/xlnt
+   :alt: Build Status
+
 Getting Started
 ---------------
 We will soon link our ReadTheDocs style documentation and provide pip install instructions here.
