@@ -5,10 +5,9 @@ xlnt
 also providing a function library spanning Excel built-in functions.
 
 
-.. |docs| image:: https://readthedocs.org/projects/python-xlnt/badge/?version=latest
-    :alt: Documentation Status
-    :scale: 100%
-    :target: https://docs.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/python-xlnt/badge/?version=latest
+   :target: http://python-xlnt.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 
 Getting Started
 ---------------
