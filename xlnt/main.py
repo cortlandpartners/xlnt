@@ -10,6 +10,22 @@ class Enumeration:
     paste_validation = 6
 
 
+class App(xw.App):
+
+    def __init__(self, visible=None, spec=None, add_book=True, impl=None):
+        super().__init__(visible=visible, spec=spec, add_book=add_book, impl=impl)
+
+    def enable_iterative_calculations(self, value=True, max_iterations=100, max_change=.001):
+        self.api.iteration = value
+        self.api.MaxIterations = max_iterations
+        self.api.MaxChange = max_change
+
+    @staticmethod
+    def enable_events(self, value=True):
+        # TODO: Build enable events
+        pass
+
+
 class Book(xw.Book):
 
     def __init__(self, file_path, app=None, update_links=False, read_only=True):
@@ -65,19 +81,3 @@ class Sheet(xw.Sheet):
         elif after_index:
             self.api.Copy(After=self.book.sheets[after_index + 1].api)
             return self.book.sheets[after_index + 1]
-
-
-class App(xw.App):
-
-    def __init__(self, visible=None, spec=None, add_book=True, impl=None):
-        super().__init__(visible=visible, spec=spec, add_book=add_book, impl=impl)
-
-    def enable_iterative_calculations(self, value=True, max_iterations=100, max_change=.001):
-        self.api.iteration = value
-        self.api.MaxIterations = max_iterations
-        self.api.MaxChange = max_change
-
-    @staticmethod
-    def enable_events(self, value=True):
-        # TODO: Build enable events
-        pass
