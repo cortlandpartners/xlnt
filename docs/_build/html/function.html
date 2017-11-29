@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Function Library &#8212; xlnt 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Extended xlwings API Library" href="xl.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="function-library">
+<h1>Function Library<a class="headerlink" href="#function-library" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datetime">
+<h2>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xlnt.function.Datetime">
+<em class="property">class </em><code class="descclassname">xlnt.function.</code><code class="descname">Datetime</code><a class="headerlink" href="#xlnt.function.Datetime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="xlnt.function.Datetime.edate">
+<em class="property">static </em><code class="descname">edate</code><span class="sig-paren">(</span><em>start_date</em>, <em>months</em><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Datetime.edate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd>start_date: A datetime object that represents the starting date.
+months: The number of months before or after start_date.</dd>
+<dt>Returns:</dt>
+<dd>Returns the datetime that represents the date that is the indicated number of months before or
+after a specified date (the start_date). Use edate to calculate maturity dates or due dates that fall on the
+same day of the month as the date of issue.</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="xlnt.function.Datetime.eomonth">
+<em class="property">static </em><code class="descname">eomonth</code><span class="sig-paren">(</span><em>start_date</em>, <em>months</em><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Datetime.eomonth" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Args:</dt>
+<dd>start_date: A datetime object that represents the starting date.
+months: The number of months before or after start_date.</dd>
+<dt>Returns:</dt>
+<dd>Returns the datetime of the last day of the month before or after a specified number of months.</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="xlnt.function.Datetime.now">
+<em class="property">static </em><code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Datetime.now" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Returns:</dt>
+<dd>Returns the current date and time.</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="xlnt.function.Datetime.today">
+<em class="property">static </em><code class="descname">today</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Datetime.today" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Returns:</dt>
+<dd>Returns today&#8217;s date.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="finance">
+<h2>Finance<a class="headerlink" href="#finance" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xlnt.function.Finance">
+<em class="property">class </em><code class="descclassname">xlnt.function.</code><code class="descname">Finance</code><a class="headerlink" href="#xlnt.function.Finance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="xlnt.function.Finance.xirr">
+<em class="property">static </em><code class="descname">xirr</code><span class="sig-paren">(</span><em>cashflows</em>, <em>guess=0.1</em><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Finance.xirr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Internal Rate of Return of a series of cashflows at irregular intervals.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">cashflows: a list object in which each element is a tuple of the form (date, amount), where date is a
+python datetime.date object and amount is an integer or floating point number. Cash outflows (
+investments) are represented with negative amounts, and cash inflows (returns) are positive amounts.</p>
+<p class="last">guess (optional, default = 0.1): a guess at the solution to be used as a starting point for the numerical
+solution.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>Returns the IRR as a single value</dd>
+</dl>
+<p>Note: The Internal Rate of Return (IRR) is the discount rate at which the Net Present Value (NPV) of a series
+of cash flows is equal to zero. The NPV of the series of cash flows is determined using the xnpv function in
+this module. The discount rate at which NPV equals zero is found using the secant method of numerical solution.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="xlnt.function.Finance.xnpv">
+<em class="property">static </em><code class="descname">xnpv</code><span class="sig-paren">(</span><em>rate</em>, <em>cashflows</em><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Finance.xnpv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the net present value of a series of cashflows at irregular intervals.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">rate: the discount rate to be applied to the cash flows</p>
+<p class="last">cashflows: a list object in which each element is a tuple of the form (date, amount), where date is a
+python datetime.date object and amount is an integer or floating point number. Cash outflows (
+investments) are represented with negative amounts, and cash inflows (returns) are positive amounts.</p>
+</dd>
+<dt>Returns:</dt>
+<dd>Returns a single value which is the NPV of the given cash flows.</dd>
+</dl>
+<p>Note: The Net Present Value is the sum of each of cash flows discounted back to the date of the first cash
+flow. The discounted value of a given cash flow is A/(1+r)**(t-t0), where A is the amount, r is the discout
+rate, and (t-t0) is the time in years from the date of the first cash flow in the series (t0) to the date of
+the cash flow being added to the sum (t).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="math">
+<h2>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="xlnt.function.Math">
+<em class="property">class </em><code class="descclassname">xlnt.function.</code><code class="descname">Math</code><a class="headerlink" href="#xlnt.function.Math" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="xlnt.function.Math.sumproduct">
+<em class="property">static </em><code class="descname">sumproduct</code><span class="sig-paren">(</span><em>lists</em><span class="sig-paren">)</span><a class="headerlink" href="#xlnt.function.Math.sumproduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies corresponding components in the given arrays, and returns the sum of those products.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>lists: List of lists whose components you want to multiply and then add.</dd>
+</dl>
+<p>Returns:</p>
+<dl class="docutils">
+<dt>TODO:</dt>
+<dd>Add optional criteria.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Function Library</a><ul>
+<li><a class="reference internal" href="#datetime">Datetime</a></li>
+<li><a class="reference internal" href="#finance">Finance</a></li>
+<li><a class="reference internal" href="#math">Math</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="xl.html" title="previous chapter">Extended xlwings API Library</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/function.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Aaron Fisher.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/function.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
