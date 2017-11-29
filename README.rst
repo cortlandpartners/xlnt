@@ -4,9 +4,11 @@ xlnt
 ``xlnt`` brings the power of Python to Excel. It extends `xlwings <https://github.com/ZoomerAnalytics/xlwings>`_ with more functionality native to ``VBA``, while
 also providing a function library spanning Excel built-in functions.
 
-.. image:: https://readthedocs.org/projects/python-xlnt/badge/?version=latest
-:target: http://python-xlnt.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+
+.. |docs| image:: https://readthedocs.org/projects/python-xlnt/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://docs.readthedocs.io/en/latest/?badge=latest
 
 Getting Started
 ---------------
