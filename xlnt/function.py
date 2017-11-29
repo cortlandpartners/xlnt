@@ -2,14 +2,57 @@ import datetime as dt
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
 from scipy import optimize
+import numpy as np
 
 
 class Datetime:
 
     @staticmethod
-    def eomonth(date, i):
-        date = date + relativedelta(months=i)
+    def edate(start_date, months):
+        """
+        Args:
+            start_date: A datetime object that represents the starting date.
+            months: The number of months before or after start_date.
+
+        Returns:
+            Returns the datetime that represents the date that is the indicated number of months before or
+            after a specified date (the start_date). Use edate to calculate maturity dates or due dates that fall on the
+            same day of the month as the date of issue.
+
+        """
+        return start_date + relativedelta(months=months)
+
+    @staticmethod
+    def eomonth(start_date, months):
+        """
+        Args:
+            start_date: A datetime object that represents the starting date.
+            months: The number of months before or after start_date.
+
+        Returns:
+            Returns the datetime of the last day of the month before or after a specified number of months.
+
+        """
+        date = start_date + relativedelta(months=months)
         return dt.date(date.year, date.month, monthrange(date.year, date.month)[1])
+
+    @staticmethod
+    def now():
+        """
+        Returns:
+            Returns the current date and time.
+
+        """
+        return dt.datetime.now()
+
+    @staticmethod
+    def today():
+        """
+        Returns:
+            Returns today's date.
+        """
+
+        return dt.date.today()
 
 
 class Finance:
@@ -61,3 +104,28 @@ class Finance:
 
         """
         return optimize.newton(lambda r: Finance.xnpv(r, cashflows), guess)
+
+
+class Math:
+
+    @staticmethod
+    def sumproduct(lists):
+        """
+        Multiplies corresponding components in the given arrays, and returns the sum of those products.
+
+        Args:
+            lists: List of lists whose components you want to multiply and then add.
+
+        Returns:
+
+        TODO:
+            Add optional criteria.
+
+        """
+
+        product_arr = [1]
+
+        for list_ in lists:
+            product_arr *= np.array(list_)
+
+        return np.sum(product_arr)

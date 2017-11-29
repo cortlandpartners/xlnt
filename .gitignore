@@ -1,7 +1,7 @@
 # Default
 .idea/
 *.egg-info/
-__pychache__/
+__pycache__/
 
 # Windows image file caches
 Thumbs.db
