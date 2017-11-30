@@ -28,27 +28,29 @@ class App(xw.App):
 
 class Book(xw.Book):
 
-    def __init__(self, file_path, app=None, update_links=False, read_only=True):
+    def __init__(self, file_path=None, update_links=False, read_only=True):
 
-        self._app = app
+        self._app = None
 
-        if not self._app:
-            if xw.apps.count >= 1:
-                self._app = xw.apps[0]
-            else:
-                self._app = xw.App(add_book=False)
+        if xw.apps.count >= 1:
+            self._app = xw.apps[0]
+        elif file_path:
+            self._app = xw.App(add_book=False)
 
-        if not self.is_open(wb_path=file_path):
+        if file_path and not self.is_open(wb_path=file_path):
             self._app.books.api.Open(file_path, UpdateLinks=update_links, ReadOnly=read_only)
 
         super().__init__(fullname=file_path)
 
-    def close(self):
-        super().close()
+    def close(self, save_changes=False):
 
-        # cleanup app
-        if self._app.books.count == 0:
-            self._app.quit()
+        if save_changes:
+            self.save()
+
+        if self.app.books.count == 1:
+            self.app.quit()
+        else:
+            super().close()
 
     @staticmethod
     def is_open(wb_path):
@@ -73,6 +75,10 @@ class Sheet(xw.Sheet):
             return None
 
     def copy(self, before_index=None, after_index=None):
+
+        # default to end if not index specified
+        if not before_index and not after_index:
+            after_index = self.book.sheets.count - 1
 
         if before_index:
             self.api.Copy(Before=self.book.sheets[before_index - 1].api)
